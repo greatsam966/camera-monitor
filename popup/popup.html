@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Meet Camera Monitor</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>📷 Meet Camera Monitor</h1>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+        <button class="tab-btn" data-tab="settings">Settings</button>
+      </div>
+    </header>
+
+    <section id="tab-dashboard" class="tab-panel active">
+      <div id="no-session-msg" class="empty-state">
+        Open an active Google Meet call to see live stats here, or pick a
+        past session below.
+      </div>
+
+      <div class="session-picker">
+        <label for="session-select">Session:</label>
+        <select id="session-select"></select>
+      </div>
+
+      <table class="data-table" id="participant-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Off Duration</th>
+            <th>Off Count</th>
+            <th>Join</th>
+            <th>Leave</th>
+            <th>Compliance</th>
+          </tr>
+        </thead>
+        <tbody id="participant-table-body"></tbody>
+      </table>
+
+      <div class="export-row">
+        <button id="export-csv-btn" class="btn">Export CSV</button>
+        <button id="export-json-btn" class="btn">Export JSON</button>
+        <button id="clear-data-btn" class="btn btn-danger">Clear All Data</button>
+      </div>
+    </section>
+
+    <section id="tab-settings" class="tab-panel">
+      <div class="settings-group">
+        <label class="switch-row">
+          <span>Enable Monitoring</span>
+          <input type="checkbox" id="setting-monitoring-enabled" />
+        </label>
+
+        <div class="field-row">
+          <label for="setting-notify-seconds">Notify after (seconds camera off)</label>
+          <div class="field-input-group">
+            <input type="number" id="setting-notify-seconds" min="1" />
+            <label class="na-toggle"><input type="checkbox" id="setting-notify-na" /> N/A</label>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label for="setting-warning-seconds">Warning after (seconds camera off)</label>
+          <div class="field-input-group">
+            <input type="number" id="setting-warning-seconds" min="5" />
+            <label class="na-toggle"><input type="checkbox" id="setting-warning-seconds-na" /> N/A</label>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label for="setting-warning-occurrences">Warning after (camera-off occurrences)</label>
+          <div class="field-input-group">
+            <input type="number" id="setting-warning-occurrences" min="1" />
+            <label class="na-toggle"><input type="checkbox" id="setting-warning-occurrences-na" /> N/A</label>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label for="setting-violation-seconds">Flag for review after (seconds camera off)</label>
+          <div class="field-input-group">
+            <input type="number" id="setting-violation-seconds" min="10" />
+            <label class="na-toggle"><input type="checkbox" id="setting-violation-na" /> N/A</label>
+          </div>
+        </div>
+
+        <p class="settings-note">
+          ℹ️ Each stage above can be set to <strong>N/A</strong> to disable
+          it entirely. This extension never removes participants
+          automatically, individually or in bulk. When someone crosses
+          the "flag for review" threshold, they're shown with a red
+          badge and a "Locate" button that opens Meet's own Participants
+          panel and scrolls to them — the host still clicks Meet's real
+          Remove control themselves, one person at a time.
+        </p>
+
+        <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+        <span id="settings-saved-msg" class="saved-msg"></span>
+      </div>
+    </section>
+  </div>
+
+  <script src="../utils/logger.js"></script>
+  <script src="../utils/time-utils.js"></script>
+  <script src="../storage/storage-manager.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

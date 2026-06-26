@@ -1,0 +1,155 @@
+#mcm-overlay-root {
+  position: fixed;
+  top: 80px;
+  right: 16px;
+  z-index: 99999;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+}
+
+.mcm-panel {
+  width: 280px;
+  background: #202124;
+  color: #e8eaed;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  overflow: hidden;
+  border: 1px solid #3c4043;
+}
+
+.mcm-minimized .mcm-summary,
+.mcm-minimized .mcm-list,
+.mcm-minimized .mcm-footer {
+  display: none;
+}
+
+.mcm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #2d2e30;
+  cursor: move;
+  user-select: none;
+}
+
+.mcm-title { font-weight: 600; }
+
+.mcm-header-actions { display: flex; gap: 6px; }
+
+.mcm-icon-btn {
+  background: transparent;
+  border: none;
+  color: #e8eaed;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.mcm-icon-btn:hover { background: #3c4043; }
+
+.mcm-summary {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 8px;
+  border-bottom: 1px solid #3c4043;
+}
+
+.mcm-bulk-actions {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #3c4043;
+}
+
+.mcm-bulk-btn {
+  flex: 1;
+  background: #3c4043;
+  border: none;
+  color: #e8eaed;
+  font-size: 10px;
+  padding: 6px 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mcm-bulk-btn:hover { background: #4a4d50; }
+
+.mcm-stat { display: flex; flex-direction: column; align-items: center; }
+.mcm-stat-value { font-size: 18px; font-weight: 700; }
+.mcm-stat-label { font-size: 10px; color: #9aa0a6; text-transform: uppercase; }
+
+.mcm-list {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.mcm-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #2d2e30;
+}
+
+.mcm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #34a853;
+}
+.mcm-flag-notice .mcm-dot { background: #4dabf7; }
+.mcm-flag-warning .mcm-dot { background: #fbbc04; }
+.mcm-flag-violation .mcm-dot { background: #ea4335; }
+
+.mcm-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mcm-timer {
+  font-variant-numeric: tabular-nums;
+  color: #9aa0a6;
+  min-width: 42px;
+  text-align: right;
+}
+
+.mcm-score {
+  min-width: 38px;
+  text-align: right;
+  color: #9aa0a6;
+}
+
+.mcm-assist-btn {
+  background: #1a73e8;
+  border: none;
+  color: white;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.mcm-assist-btn:hover { background: #1765cc; }
+
+.mcm-dismiss-btn {
+  background: transparent;
+  border: 1px solid #5f6368;
+  color: #9aa0a6;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.mcm-dismiss-btn:hover { background: #3c4043; color: #e8eaed; }
+
+.mcm-footer {
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #9aa0a6;
+  border-top: 1px solid #3c4043;
+}

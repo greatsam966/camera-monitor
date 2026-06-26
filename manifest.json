@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Meet Camera Monitor",
+  "version": "1.0.0",
+  "description": "Monitor participant camera activity and maintain attendance/compliance records during Google Meet sessions.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://meet.google.com/*"],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": [
+        "utils/logger.js",
+        "utils/dom-utils.js",
+        "utils/time-utils.js",
+        "storage/storage-manager.js",
+        "content/meet-observer.js",
+        "content/camera-detector.js",
+        "content/attendance-tracker.js",
+        "content/auto-removal.js",
+        "content/ui-overlay.js",
+        "content/main.js"
+      ],
+      "css": ["content/overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}
